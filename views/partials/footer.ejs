@@ -1,0 +1,13 @@
+<footer class="site-footer">
+  <div class="footer-main">
+    <div class="footer-brand-col"><a class="brand footer-brand" href="/"><span class="brand-mark"><img class="brand-logo" src="<%= imageSrc('logo.svg') %>" data-image-fallback="/img/logo.svg" alt=""></span><span class="brand-name">MOUNTAIN<span>ATLAS</span></span></a><p>A field-to-library atlas exploring the geology, ecology, wildlife, waters and cultures of mountain regions around the world.</p><span class="footer-motto">A little more wonder. A little more understanding.</span></div>
+    <div class="footer-col"><h3>Explore</h3><a href="/mountain-earth">Mountain Earth</a><a href="/world-ranges">World ranges</a><a href="/altitude-zones">The vertical world</a><a href="/mountain-explorer">Elevation explorer</a><a href="/glossary">Science glossary</a></div>
+    <div class="footer-col"><h3>Living systems</h3><a href="/wildlife">Mountain wildlife</a><a href="/mountain-birds">Birds</a><a href="/forests-plants">Forests & plants</a><a href="/water-climate">Water & climate</a><a href="/conservation">Conservation</a></div>
+    <div class="footer-col"><h3>Learn & prepare</h3><a href="/people-culture">People & culture</a><a href="/geology-hazards">Geology & hazards</a><a href="/field-guide">Field guide</a><a href="/climate-and-safety">Weather & safety</a><a href="/quiz">Knowledge check</a><a href="/references">References</a></div>
+  </div>
+  <div class="footer-sitemap">
+    <div class="footer-sitemap-heading"><span class="section-index">COMPLETE SITE INDEX</span><span>Every trail, all in one place.</span></div>
+    <div class="footer-sitemap-grid"><% navGroups.forEach((group) => { %><div class="footer-sitemap-group"><h3><%= group.title %></h3><% group.links.forEach((link) => { %><a href="/<%= link[1] %>"><%= link[0] %></a><% }); %></div><% }); %><div class="footer-sitemap-group"><h3>More routes</h3><a href="/about">About this atlas</a><a href="/search">Search all topics</a><a href="/">Homepage overview</a></div></div>
+  </div>
+  <div class="footer-bottom"><span>© <%= year %> Mountain Atlas · Educational project</span><span>Built for curious minds, not hurried scrolling.</span><a href="#main-content" data-back-to-top>Back to top ↑</a></div>
+</footer>

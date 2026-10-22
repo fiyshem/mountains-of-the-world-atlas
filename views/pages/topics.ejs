@@ -1,0 +1,30 @@
+<%- include('../partials/head', { page }) %>
+<%- include('../partials/header') %>
+<%- include('../partials/sidebar') %>
+<main class="main-content article-main" id="main-content">
+  <div class="article-shell topics-shell">
+    <div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>Learning library</span></div>
+    <header class="page-masthead topics-masthead reveal">
+      <div class="masthead-copy"><span class="article-eyebrow"><span class="kicker-line"></span> THE COMPLETE LEARNING LIBRARY</span><h1>Choose a trail.<br><em>Follow the questions.</em></h1><p class="article-deck">Browse the whole atlas by subject. Each trail connects landforms, climate, living systems, people and ways to investigate mountains more carefully.</p><div class="topics-stats"><span><strong><%= topicPages.length %></strong> learning pages</span><span><strong><%= rangeCards.length %></strong> regional case studies</span><span><strong><%= glossary.length %></strong> glossary terms</span></div></div>
+      <div class="masthead-art"><img src="<%= imageSrc('topics.svg') %>" data-image-fallback="/img/topics.svg" alt="Mountain layers representing the complete learning library"><span>ONE ATLAS / MANY PATHS</span></div>
+    </header>
+    <div class="topics-toolbar reveal"><div><span class="section-index">FIND YOUR NEXT SUBJECT</span><p>Use the search box to filter titles and descriptions.</p></div><label class="topics-filter"><span class="sr-only">Filter topics</span><input type="search" id="topic-library-search" placeholder="Search topics, places, ecology…" autocomplete="off"><span>⌕</span></label></div>
+    <% navGroups.forEach((group, gi) => { %>
+      <section class="topic-library-group reveal" data-topic-group>
+        <div class="topic-library-heading"><span class="topic-library-number"><%= String(gi+1).padStart(2,'0') %></span><div><h2><%= group.title %></h2><p><%= group.links.length %> connected topics</p></div><a href="/<%= group.links[0][1] %>">Start this trail ↗</a></div>
+        <div class="topic-library-grid">
+          <% group.links.forEach((link, li) => { const item = pageMap[link[1]]; if (item && item.slug !== 'topics') { %>
+            <a class="topic-library-card" href="/<%= item.slug %>" data-topic-search="<%= (item.title+' '+item.description+' '+item.category).toLowerCase() %>">
+              <div class="topic-library-image"><img loading="lazy" src="<%= imageSrc(item.image) %>" data-image-fallback="/img/<%= item.slug %>.svg" alt=""><span><%= String(li+1).padStart(2,'0') %></span></div>
+              <div class="topic-library-copy"><span class="small-label"><%= item.category.toUpperCase() %></span><h3><%= item.title %></h3><p><%= item.description %></p><span class="inline-arrow">Open field note ↗</span></div>
+            </a>
+          <% } }); %>
+        </div>
+      </section>
+    <% }); %>
+    <div id="topic-library-empty" class="no-results topic-library-empty" hidden><div>⌕</div><h2>No topic matches that search.</h2><p>Try a broader term such as “water”, “forest”, “rock”, “culture” or “fieldwork”.</p></div>
+    <section class="range-note reveal"><div class="note-symbol">✳</div><div><span class="section-index">FOLLOW A CONNECTION</span><h2>Mountains make sense <em>as systems.</em></h2><p>Start anywhere, then follow the links between geology, water, biodiversity and human life. The best questions often sit between subjects.</p></div><a class="button button-primary" href="/quiz">Test your knowledge ↗</a></section>
+  </div>
+  <%- include('../partials/footer') %>
+</main>
+<%- include('../partials/layout-end') %>

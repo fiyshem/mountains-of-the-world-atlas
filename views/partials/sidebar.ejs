@@ -1,0 +1,15 @@
+<aside class="sidebar" id="site-sidebar" aria-label="Site contents">
+  <div class="sidebar-inner">
+    <div class="sidebar-heading"><span>YOUR ATLAS</span><span class="live-dot"></span></div>
+    <a class="sidebar-home <%= currentPath === '/' ? 'is-active' : '' %>" href="/"><span class="nav-glyph">⌂</span><span>Overview</span><span class="nav-arrow">↗</span></a>
+    <% navGroups.forEach((group, gi) => { const groupActive = group.links.some((link) => currentSlug === link[1]); %>
+      <details class="sidebar-group" <%= groupActive || gi === 0 ? 'open' : '' %>>
+        <summary><span class="group-index"><%= String(gi + 1).padStart(2, '0') %></span><span><%= group.title %></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5"/></svg></summary>
+        <div class="sidebar-links"><% group.links.forEach((link) => { %><a href="/<%= link[1] %>" class="sidebar-link <%= currentSlug === link[1] ? 'is-active' : '' %>"><span class="link-dot"></span><%= link[0] %><% if (currentSlug === link[1]) { %><span class="active-mark" aria-hidden="true"></span><% } %></a><% }); %></div>
+      </details>
+    <% }); %>
+    <div class="sidebar-note"><div class="sidebar-note-icon">✳</div><p><strong>Look closer.</strong><br>Every mountain is a story written in stone, water and life.</p><a href="/field-guide">Open field notes <span>↗</span></a></div>
+    <div class="sidebar-bottom"><span class="status-pip"></span> An open learning atlas <span class="version">v1.0</span></div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" data-sidebar-backdrop></div>

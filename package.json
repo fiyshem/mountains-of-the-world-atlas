@@ -1,0 +1,26 @@
+{
+  "name": "mountains-of-the-world-atlas",
+  "version": "2.0.0",
+  "private": true,
+  "description": "A multi-page educational atlas of mountain geology, ecology, wildlife, climate and culture.",
+  "main": "server.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "check": "node scripts/check-project.js",
+    "test": "npm run check && node scripts/smoke-test.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

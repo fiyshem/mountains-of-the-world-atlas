@@ -1,0 +1,25 @@
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="icon-button sidebar-toggle" type="button" aria-label="Collapse navigation" aria-expanded="true" data-sidebar-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    <a class="brand" href="/" aria-label="Mountain Atlas home"><span class="brand-mark"><img class="brand-logo" src="<%= imageSrc('logo.svg') %>" data-image-fallback="/img/logo.svg" alt=""></span><span class="brand-name">MOUNTAIN<span>ATLAS</span></span></a>
+    <span class="topbar-divider"></span>
+    <span class="topbar-note">A field guide to a living planet</span>
+  </div>
+  <nav class="top-nav" aria-label="Main navigation">
+    <a class="top-nav-link <%= currentPath === '/' ? 'is-active' : '' %>" href="/">Home</a>
+    <% topNavGroups.forEach((group, gi) => { %>
+      <details class="nav-dropdown nav-dropdown-<%= gi + 1 %>">
+        <summary><%= group.title %> <span class="chevron">⌄</span></summary>
+        <div class="dropdown-panel <%= group.links.length > 6 ? 'dropdown-panel-long' : '' %>">
+          <span class="dropdown-kicker"><%= group.title %> / COLLECTION</span>
+          <% group.links.forEach((link) => { %><a href="/<%= link[1] %>" class="<%= currentSlug === link[1] ? 'is-active' : '' %>"><%= link[0] %><% if (link[2]) { %><small><%= link[2] %></small><% } %></a><% }); %>
+          <% if (gi === 0) { %><a href="/topics" class="dropdown-all-link">Browse the complete library ↗</a><% } %>
+        </div>
+      </details>
+    <% }); %>
+  </nav>
+  <div class="topbar-actions">
+    <form class="top-search" action="/search" method="get" role="search"><label class="sr-only" for="top-search-input">Search the atlas</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="top-search-input" name="q" type="search" placeholder="Search atlas…" autocomplete="off"></form>
+    <button class="icon-button theme-toggle" type="button" aria-label="Switch to dark theme" data-theme-toggle><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 14.2A8.9 8.9 0 0 1 9.8 3.3 9.2 9.2 0 1 0 20.7 14.2Z"/></svg></button>
+  </div>
+</header>

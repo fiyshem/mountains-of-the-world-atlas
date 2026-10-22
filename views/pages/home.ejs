@@ -1,0 +1,45 @@
+<%- include('../partials/head', { page }) %>
+<%- include('../partials/header') %>
+<%- include('../partials/sidebar') %>
+<main class="main-content home-main" id="main-content">
+  <div class="home-container">
+    <div class="hero-kicker reveal"><span class="kicker-line"></span> THE WORLD, FROM THE GROUND UP <span class="kicker-season">FIELD NOTES · VOL. 01</span></div>
+    <section class="home-hero">
+      <div class="hero-copy reveal">
+        <div class="hero-eyebrow"><span class="eyebrow-symbol">✳</span> AN OPEN ATLAS OF MOUNTAIN KNOWLEDGE</div>
+        <h1>Higher ground.<br><em>Deeper understanding.</em></h1>
+        <p class="hero-lead">A journey through the living systems of the world’s mountains — from the forces that raise them to the wildlife, forests, rivers and people that call them home.</p>
+        <div class="hero-actions"><a class="button button-primary" href="/mountain-earth">Begin exploring <span>↗</span></a><a class="text-link" href="/topics">Browse all learning topics <span>→</span></a></div>
+        <div class="hero-footnote"><span class="mini-avatars"><b>01</b><b>02</b><b>03</b></span><span>One planet. Many mountain worlds.<br><strong>Built for the curious.</strong></span></div>
+      </div>
+      <div class="hero-art reveal reveal-delay-1">
+        <div class="hero-image-frame"><img src="<%= imageSrc('global-ranges.svg') %>" data-image-fallback="/img/global-ranges.svg" alt="Layered mountain ridges under an open sky, illustrated in the atlas style"><div class="hero-image-grain"></div><div class="image-coordinate">46° 51′ N&nbsp; / &nbsp;09° 31′ E</div><div class="hero-image-caption"><span class="caption-dot"></span><span>FIELD STUDY NO. 001</span><strong>Landscapes in motion</strong></div></div>
+        <div class="floating-stamp"><span>READ</span><strong>THE<br>LAND</strong><span>✳</span></div>
+        <div class="hero-side-note">GEOGRAPHY / GEOLOGY / LIFE</div>
+      </div>
+    </section>
+
+    <section class="metric-strip reveal" aria-label="Atlas overview"><div><span class="metric-number"><%= rangeCards.length %></span><span class="metric-label">regional range studies</span></div><div><span class="metric-number"><%= navGroups.length %></span><span class="metric-label">connected knowledge themes</span></div><div><span class="metric-number">01</span><span class="metric-label">interconnected mountain planet</span></div><div class="metric-aside">Start with a question.<br><em>Leave with a wider view.</em></div></section>
+
+    <section class="section-block opening-block"><div class="section-heading reveal"><div><span class="section-index">A / THE BIG PICTURE</span><h2>Mountains are more than<br><em>the sum of their peaks.</em></h2></div><p>They make weather, store freshwater, shelter specialised life and record deep geological time. To understand a mountain, look at the whole system — not just the summit.</p></div>
+      <div class="opening-grid"><a class="opening-card opening-card-large reveal" href="/mountain-earth"><img src="<%= imageSrc('mountain-earth.svg') %>" data-image-fallback="/img/mountain-earth.svg" alt="Illustrated tectonic mountain landscape"><div class="card-overline">01 — EARTH SCIENCE</div><div class="opening-card-copy"><h3>First, understand<br>the ground beneath you.</h3><p>Plate tectonics, folded rock, volcanoes, uplift and erosion.</p><span class="circle-arrow">↗</span></div></a>
+      <a class="opening-card opening-card-tall reveal reveal-delay-1" href="/altitude-zones"><img src="<%= imageSrc('altitude-zones.svg') %>" data-image-fallback="/img/altitude-zones.svg" alt="Illustrated elevation bands with forested and snowy peaks"><div class="card-overline">02 — ECOLOGY</div><div class="opening-card-copy"><h3>A world of worlds,<br>stacked by height.</h3><p>Follow the shifting boundaries between forests, meadows, rock and ice.</p><span class="circle-arrow">↗</span></div></a>
+      <a class="opening-card opening-card-short reveal reveal-delay-2" href="/water-climate"><img src="<%= imageSrc('water-climate.svg') %>" data-image-fallback="/img/water-climate.svg" alt="Illustrated high mountain glacier and river valley"><div class="opening-card-copy"><span class="small-label">03 — WATER & CLIMATE</span><h3>The high places that feed rivers.</h3><span class="inline-arrow">Explore water systems ↗</span></div></a></div>
+    </section>
+
+    <section class="section-block atlas-block"><div class="section-heading reveal"><div><span class="section-index">B / A WORLD IN RIDGES</span><h2>Meet the great<br><em>mountain systems.</em></h2></div><div class="heading-right"><p>Each range has its own geology, climate, wildlife and human history. Compare them and the planet’s patterns begin to emerge.</p><a class="text-link" href="/world-ranges">Explore all regional studies <span>→</span></a></div></div>
+      <div class="range-card-grid"><% rangeCards.slice(0,6).forEach((range, index) => { %><a href="/<%= range.slug %>" class="range-card reveal <%= index===0 ? 'range-card-featured' : '' %>" data-region="<%= range.region %>"><div class="range-card-image"><img loading="lazy" src="<%= imageSrc(range.image) %>" data-image-fallback="/img/<%= range.slug %>.svg" alt="Illustrated landscape representing the <%= range.name %>"><span class="range-card-count"><%= String(index+1).padStart(2,'0') %></span><span class="range-card-open">↗</span></div><div class="range-card-body"><div class="range-meta"><span><%= range.region.toUpperCase() %></span><span><%= range.stat %></span></div><h3><%= range.name %></h3><p><%= range.note %></p></div></a><% }); %></div>
+      <div class="all-ranges-bar reveal"><span>There is much more beyond the familiar silhouettes.</span><a class="button button-outline" href="/world-ranges">See every range <span>→</span></a></div>
+    </section>
+
+    <section class="quote-band reveal"><span class="quote-mark">“</span><blockquote>A mountain is not a single place. It is a vertical journey through changing conditions, living communities and time.</blockquote><div class="quote-credit"><span></span> A FIELD GUIDE PERSPECTIVE</div><img src="<%= imageSrc('conservation.svg') %>" data-image-fallback="/img/conservation.svg" alt="" class="quote-illustration" loading="lazy"></section>
+
+    <section class="section-block themes-block"><div class="section-heading reveal"><div><span class="section-index">C / FOLLOW A THREAD</span><h2>One landscape.<br><em>Many ways to see it.</em></h2></div><p>Choose a subject and connect the details: a bird to a forest, a glacier to a river, a rock layer to a civilisation.</p></div><div class="theme-grid"><% topicCards.forEach((topic,i)=> { %><a class="theme-card reveal theme-card-<%= (i%4)+1 %>" href="/<%= topic.slug %>"><div class="theme-card-top"><span><%= String(i+1).padStart(2,'0') %></span><img loading="lazy" src="<%= imageSrc(topic.image) %>" data-image-fallback="/img/<%= topic.slug %>.svg" alt=""></div><div><span class="small-label"><%= topic.category.toUpperCase() %></span><h3><%= topic.title %></h3><p><%= topic.description %></p></div><span class="theme-arrow">↗</span></a><% }); %></div></section>
+
+    <section class="explore-cta reveal"><div class="explore-cta-art"><img src="<%= imageSrc('altitude-zones.svg') %>" data-image-fallback="/img/altitude-zones.svg" alt="Mountain elevation landscape illustration" loading="lazy"><span class="cta-ring cta-ring-one"></span><span class="cta-ring cta-ring-two"></span></div><div class="explore-cta-copy"><span class="section-index">INTERACTIVE FIELD LAB</span><h2>Take the long way<br><em>up the mountain.</em></h2><p>Move through elevation zones and uncover the changing mix of climate, vegetation and wildlife. The higher you go, the more the conditions change.</p><a class="button button-primary" href="/mountain-explorer">Open elevation explorer <span>↗</span></a></div><div class="cta-coordinate">HEIGHT / HABITAT / CHANGE</div></section>
+
+    <section class="closing-note reveal"><div class="closing-symbol">✳</div><div><span class="section-index">A NOTE BEFORE YOU GO</span><h2>Stay curious. <em>Stay respectful.</em></h2><p>Mountain knowledge is strongest when it brings science, local knowledge and careful observation together. Use this atlas as a starting point, and follow the references for deeper study.</p></div><a class="text-link" href="/references">Visit the reading room <span>→</span></a></section>
+  </div>
+  <%- include('../partials/footer') %>
+</main>
+<%- include('../partials/layout-end') %>
