@@ -220,4 +220,4 @@ app.use((err, req, res, next) => {
   res.status(500).render('pages/not-found', { page: { title: 'Something went off trail', description: 'The page could not be loaded.' }, serverError: true });
 });
 
-app.listen(PORT,"0.0.0.0", () => console.log(`\nMountain Atlas is ready at http://localhost:${PORT}\nPress Ctrl+C to stop the server.\n`));
+app.listen(PORT, "0.0.0.0", () => console.log(`\nMountain Atlas is ready at http://localhost:${PORT}\nPress Ctrl+C to stop the server.\n`));
